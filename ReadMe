@@ -1,0 +1,99 @@
+# CREER UNE CATEGORIE
+# Remplacez 'NomCatégorie' par le nom souhaité pour la catégorie et 'URLImageCatégorie' par l'URL de l'image associée
+"""
+from test_app.models import Categorie
+
+categorie = Categorie(nom='NomCatégorie', image='URLImageCatégorie')
+categorie.save()
+"""
+
+
+
+# CREER UN CHALLENGE
+# Remplacez 'IDCategorie' par l'ID de la catégorie que vous souhaitez associer au challenge
+"""
+from test_app.models import Categorie, Challenge
+rom django.utils import timezone
+import datetime
+
+categorie = Categorie.objects.get(id=IDCategorie)
+
+challenge = Challenge(
+    categorie=categorie,
+    titre='TitreChallenge',
+    description_generale='DescriptionGénéraleDuChallenge',
+    niveau_difficulte=1,  # Remplacez par le niveau de difficulté souhaité
+    montant_recompense_total=100.00,  # Remplacez par le montant total de la récompense
+    date_expiration=timezone.now() + datetime.timedelta(days=30),  # Exemple pour une expiration dans 30 jours
+    image='URLImageChallenge'  # Remplacez par l'URL de l'image du challenge
+ )
+challenge.save()
+"""
+
+
+# CREER UN PALIER PAR UN CHALLENGE
+# Remplacez 'IDChallenge' par l'ID du challenge pour lequel vous créez des paliers
+"""
+from test_app.models import Challenge, Palier
+
+challenge = Challenge.objects.get(id=IDChallenge)
+
+palier = Palier(
+    challenge=challenge,
+    titre='TitrePalier',
+    description='DescriptionDuPalier',
+    niveau=1,  # Remplacez par le niveau approprié
+    montant_recompense=50.00  # Remplacez par le montant de la récompense pour ce palier
+)
+palier.save()
+"""
+
+# PARTICIPATION A FALSE
+# Remplacez 'IDParticipation' par l'ID de la participation que vous souhaitez modifier
+"""
+from test_app.models import Participation
+
+participation = Participation.objects.get(id=IDParticipation)
+participation.completé = False
+participation.save()
+"""
+
+# SUPPRIMER LIGNE A PARTICIPATION
+# Remplacez '2' par l'ID de la participation que vous souhaitez supprimer
+"""
+from test_app.models import Participation
+
+participation_a_supprimer = Participation.objects.get(id=5)
+participation_a_supprimer.delete()
+"""
+
+
+# AFFICHER LIGNES DE CATEGORIE
+# from test_app.models import Categorie
+
+# for categorie in Categorie.objects.all():
+#    print(f"ID: {categorie.id}, Nom: {categorie.nom}, Image: {categorie.image}")
+
+
+# AFFICHER LIGNES DE CHALLENGE
+# from test_app.models import Challenge
+
+# for challenge in Challenge.objects.all():
+#    print(f"ID: {challenge.id}, Titre: {challenge.titre}, Description: {challenge.description_generale}, Niveau Difficulté: {challenge.niveau_difficulte}, Montant Récompense Total: {challenge.montant_recompense_total}, Date Création: {challenge.date_creation}, Date Expiration: {challenge.date_expiration}, Image: {challenge.image}")
+
+
+# AFFICHER LIGNE DE PALIER
+"""
+from test_app.models import Palier
+
+for palier in Palier.objects.all():
+    print(f"ID: {palier.id}, Challenge ID: {palier.challenge_id}, Titre: {palier.titre}, Description: {palier.description}, Niveau: {palier.niveau}, Montant Récompense: {palier.montant_recompense}, Date Création: {palier.date_creation}")
+"""
+
+# AFFICHER LIGNE DE PARTICIPATION
+"""
+from test_app.models import Participation
+
+for participation in Participation.objects.all():
+    print(f"ID: {participation.id}, Utilisateur ID: {participation.utilisateur_id}, Challenge ID: {participation.challenge_id}, Palier Atteint: {participation.palier_atteint}, Date Participation: {participation.date_participation}, Completé: {participation.completé}")
+"""

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Liste des Challenges</title>
+</head>
+<body>
+    <h1>Liste des Challenges</h1>
+    <ul>
+        {% for challenge in challenges %}
+        <li>{{ challenge.titre }}: {{ challenge.description }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
